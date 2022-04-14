@@ -56,7 +56,9 @@ def pregunta_03():
     Name: _c1, dtype: int64
 
     """
-    return
+    cantidad = tbl0.groupby("_c1")["_c1"].count()
+
+    return cantidad
 
 
 def pregunta_04():
