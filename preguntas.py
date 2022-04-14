@@ -73,7 +73,9 @@ def pregunta_04():
     E    4.785714
     Name: _c2, dtype: float64
     """
-    return
+    promedio = tbl0.groupby("_c1")["_c2"].mean()
+
+    return promedio
 
 
 def pregunta_05():
