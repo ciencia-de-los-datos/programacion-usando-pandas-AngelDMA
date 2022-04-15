@@ -245,7 +245,11 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    return
+    df = tbl2.copy()
+    df["_c5"] = df["_c5a"] + ":" + df["_c5b"].apply(str)
+    df = df.sort_values(by="_c5").groupby("_c0", as_index=False).agg({"_c5":','.join})
+
+    return df
 
 
 def pregunta_13():
