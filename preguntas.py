@@ -198,7 +198,9 @@ def pregunta_10():
         else:
             letras[x["_c1"]] = letras[x["_c1"]] + ":" + str(x["_c2"])
 
-    resultado = pd.DataFrame(list(letras.items()), columns=["_c1","_c2"])
+    resultado = pd.DataFrame({"_c2":list(letras.values())}
+    , index=pd.Series(list(letras.keys()), name="_c1")
+    )
     
     return resultado
 
