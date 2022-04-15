@@ -7,6 +7,8 @@ Este archivo contiene las preguntas que se van a realizar en el laboratorio.
 Utilice los archivos `tbl0.tsv`, `tbl1.tsv` y `tbl2.tsv`, para resolver las preguntas.
 
 """
+from operator import index
+from unicodedata import name
 import pandas as pd
 
 tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
@@ -187,8 +189,15 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    letras = {r:'' for r in sorted(set(tbl0["_c1"]))}
 
+    for index,x in tbl0.sort_values(by=["_c2"]).iterrows():
+        if len(letras[x["_c1"]]) == 0:
+            letras[x["_c1"]] = '' + str(x["_c2"])
+        else:
+            letras[x["_c1"]] = letras[x["_c1"]] + ":" + str(x["_c2"])
+
+    return pd.DataFrame(list(letras.items()), columns=["_c0","_c1"])
 
 def pregunta_11():
     """
