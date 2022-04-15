@@ -106,7 +106,9 @@ def pregunta_06():
     ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
     """
-    return
+    valores =  sorted(set(tbl1["_c4"].str.upper()))
+
+    return valores
 
 
 def pregunta_07():
