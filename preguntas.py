@@ -145,7 +145,10 @@ def pregunta_08():
     39   39   E    5  1998-01-26    44
 
     """
-    return
+    suma = tbl0.copy()
+    suma["suma"] = suma["_c0"] + suma["_c2"]
+
+    return suma
 
 
 def pregunta_09():
