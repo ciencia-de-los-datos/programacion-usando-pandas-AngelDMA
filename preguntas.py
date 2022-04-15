@@ -190,6 +190,7 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
+    '''
     letras = {r:'' for r in sorted(set(tbl0["_c1"]))}
 
     for index,x in tbl0.sort_values(by=["_c2"]).iterrows():
@@ -201,8 +202,12 @@ def pregunta_10():
     resultado = pd.DataFrame({"_c2":list(letras.values())}
     , index=pd.Series(list(letras.keys()), name="_c1")
     )
-    
-    return resultado
+    '''
+    df = tbl0.copy()
+    df["_c2"] = df["_c2"].apply(lambda x: str(x))
+    df = df.sort_values(by=["_c2"]).groupby("_c1", as_index=True).agg({"_c2":':'.join})
+
+    return df
 
 def pregunta_11():
     """
