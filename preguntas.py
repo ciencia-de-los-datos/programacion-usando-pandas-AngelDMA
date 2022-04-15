@@ -225,7 +225,9 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    df = tbl1.sort_values(by="_c4").groupby("_c0", as_index=False).agg({"_c4":','.join})
+
+    return df
 
 
 def pregunta_12():
